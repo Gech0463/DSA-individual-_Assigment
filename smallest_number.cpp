@@ -1,20 +1,23 @@
-1. Find the Smallest Number in an Array (C++)
+#include <iostream>
+using namespace std;
 
-This is a simple C++ program that finds and prints the  smallest number in a given array of integers.
+int findSmallest(int arr[], int size) {
+    int minNumber = arr[0]; // Assume the first element is the smallest
 
-The program uses a function `findSmallest()` to loop through the array and determine the smallest value. The array is hardcoded, but you can easily modify it to take user input if needed.
-HOW IT WORKS
-- Initializes an array with a set of integers.
-- Calculates the array size.
-- Calls the `findSmallest()` function.
-- Prints the smallest value found in the array.
- FEATURES
-- Finds the smallest number in an array.
-- Demonstrates basic use of arrays, loops, and functions in C++.
-How to Run
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < minNumber) {
+            minNumber = arr[i]; // Update min if a smaller number is found
+        }
+    }
+    return minNumber;
+}
 
-1. Save the code** into a file, for example: `find_smallest.cpp`
-2. Open a terminal or command prompt.
-3. Compile the code using a C++ compiler:
-   ```bash
-   g++ -o find_smallest find_smallest.cpp
+int main() {
+    int arr[] = {120, 45, 67, 89, 34, 23, 90, 11};
+    int size = sizeof(arr) / sizeof(arr[0]); // Calculate array size
+
+    int smallest = findSmallest(arr, size);
+    cout << "The smallest number in the array is: " << smallest << endl;
+
+    return 0;
+}
